@@ -1,0 +1,26 @@
+<!Doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script src=''></script>
+		<meta charset="UTF-8">
+		<title><%=@post.id%></title>
+	</head>
+	<body>
+		<% if session[:id]==@post[:user_id] %>
+		<%=form_for Post.new, url: {action: update} do |f|%>
+			<%=f.text_field :content, value: "@post.content"%>
+			<%=f.submit :post%>
+			<% end %>
+		<%=form_tag("/delete", method: "post") do%>
+			<%=submit_tag("Delete Post")%>
+			<% end %>
+
+		<% else %>
+			<p><%=@post.content%></p>
+		<% end %>
+
+
+	</body>
+</html>
