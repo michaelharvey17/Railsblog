@@ -6,7 +6,14 @@ class PostsController < ApplicationController
 
   def create
     @post=Post.new(params[:post])
+    @post[:user_id]=session[:id]
 
+  end
+
+  def comment
+    @comment=Post.new(params[:post])
+    @comment[:user_id]=session[:id]
+    @comment[:post_id]=Post.find(params[:id])[:id]
   end
 
   def edit
@@ -20,6 +27,7 @@ class PostsController < ApplicationController
 
   def show
     @post=Post.find(params[:id])
+    @comments=Post.where(post_id: @post.id).last(10)
   end
 
 end 
