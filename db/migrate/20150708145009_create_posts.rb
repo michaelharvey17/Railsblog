@@ -4,7 +4,6 @@ class CreatePosts < ActiveRecord::Migration
       t.integer :user_id
       t.integer :post_id
       t.string :content
-      t.datetime :createdate
 
       t.timestamps null: false
     end

@@ -3,7 +3,12 @@ Rails.application.routes.draw do
   resources :posts
 
   root 'home#index'
-  put '/edit', to: "post#edit"
+  get '/posts/:id', to: "posts#show"
+  put 'posts/:id/edit', to: "posts#edit"
+  post '/posts/:id/comment', to: "posts#comment"
+
+
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
