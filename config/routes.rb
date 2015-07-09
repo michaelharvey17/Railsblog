@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   resources :users
   resources :posts
 
@@ -7,9 +8,13 @@ Rails.application.routes.draw do
   put 'posts/:id/edit', to: "posts#edit"
   post '/posts/:id/comment', to: "posts#comment"
   post 'posts/:id/delete', to: "posts#delete"
-
-
+   get '/sign_up', to: "users#sign_up"
+   get '/login', to: "users#login"
   
+
+
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

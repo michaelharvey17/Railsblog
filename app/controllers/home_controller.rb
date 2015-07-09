@@ -3,4 +3,12 @@ class HomeController < ApplicationController
 
   end
 
+  def index
+  end
+  
+  def 
+    
+  end
+
+ 
 end 
