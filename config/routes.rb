@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/posts/:id', to: "posts#show"
   put 'posts/:id/edit', to: "posts#edit"
   post '/posts/:id/comment', to: "posts#comment"
+  post 'posts/:id/delete', to: "posts#delete"
 
 
   

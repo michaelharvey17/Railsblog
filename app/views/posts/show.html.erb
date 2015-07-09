@@ -1,38 +1,57 @@
 <!Doctype html>
 <html>
 	<head>
-		<link rel="stylesheet" type="text/css" href="">
+		<link rel="stylesheet" type="text/css" href="../stylesheets/posts.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 		<script src=''></script>
 		<meta charset="UTF-8">
 		<title><%=@post.id%></title>
 	</head>
 	<body>
+		<header>
+			<div><a href="/users/<%=@post.user.username%>"><span>• </span><%=@post.user.username%><span> •</span></a></div>
+		</header>
 		<% if session[:id]==@post[:user_id] %>
-		<%=form_for Post.new, url: "/posts/#{@post.id}/edit", html: {method: :put} do |f|%>
-			<%=f.text_field :content, value: @post.content%>
-			<%=f.submit :post%>
-		<% end %>
-		<%=form_tag("/delete", method: "post") do%>
-			<%=submit_tag("Delete Post")%>
-		<% end %>
-
+			<div class="mainpost">
+				<%=form_for Post.new, url: "/posts/#{@post.id}/edit", html: {method: :put} do |f|%>
+					<%=f.text_area :content, class: "maincontent", value: @post.content%>
+					<%=f.submit :post%>
+				<% end %>
+				<%=form_tag("/posts/#{@post.id}/delete", method: "post") do%>
+					<%=submit_tag("Delete Post")%>
+				<% end %>
+			</div>
 		<% else %>
-			<p><%=@post.content%></p>
+			<div id="postcontent">
+				<span id="postcreated"><%=@post.created_at.strftime("%c")%></span>
+				<span id="content"><%=@post.content%></span>
+			</div>
 		<% end %>
-		<div>
-			<% @comments.each do |post| %>
-	 		<a href="/users/<%=post.user.username%>"><%=post.user.username%></a>
-	 		<p><%=post.created_at.strftime("%c") %></p>
-	 		<a href="/posts/<%=post.id%>" class="comment"><%= post.content %></a>
-	 		<% end %>
-		</div>
-		<%=form_for Post.new, url: "/posts/#{@post.id}/comment" do |f|%>
-			<%=f.label(:content, "Comment")%>
-			<%=f.text_field :content%>
-			<%=f.submit :post%>
+		<% unless session[:id]==@post[:user_id] && @post.content==nil%>
+			<div id="commentbox">
+				<span>Comment:</span>
+				<%=form_for Post.new, url: "/posts/#{@post.id}/comment" do |f|%>
+					<%=f.text_area :content, class: "commentfield"%>
+					<%=f.submit :post%>
+				<% end %>
+			</div>
 		<% end %>
-
+		<% if @comments!=[] %>
+			<div id="comments">
+				<div id="comment_title"><h1>Comments</h1></div>
+				<% @comments.each do |post| %>
+		 		<div class="ind_comment">
+		 			<a href="/users/<%=post.user.username%>" class="commenter"><%=post.user.username%></a>
+			 		<div class="timestamp"><%=post.created_at.strftime("%c") %></div>
+			 		<a href="/posts/<%=post.id%>" class="comment"><p class="comment_content"><%= post.content %><p></a>
+			 	</div>
+		 		<% end %>
+			</div>
+		<% else %>
+			<div id="comments">
+				<h1>There are no comments yet.</h1>
+			</div>
+		<% end %>
 
 	</body>
 </html>

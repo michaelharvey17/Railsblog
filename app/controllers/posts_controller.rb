@@ -24,13 +24,19 @@ class PostsController < ApplicationController
   end
 
   def delete
-    Post.find(params[:id]).destroy
+    @post=Post.find(params[:id])
+    if @post.post_id==nil
+      redirect_to '/users/#{User.find(session[:id]).username}'
+    else
+      redirect_to "/posts/#{@post.post_id}"
+    end
+    @post.destroy
   end
 
   def show
     @post=Post.find(params[:id])
-    @comments=Post.where(post_id: @post.id).last(10)
-    session[:id]=2
+    @comments=Post.where(post_id: @post.id).reverse
+    session[:id]=1
   end
 
 end 
