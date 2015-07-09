@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  def sign_up
+  def index
   end
   
 

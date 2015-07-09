@@ -7,6 +7,23 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<header>
+  <h3> Railsblog </h3> 
+	<nav>
+		<ul>
+		   <% if session[:id] %>
+                <li> Hello <%= User.find(session[:id]).username %></li>
+                 <li><%= link_to 'newPost', new_Post_path %></li>
+                <li><%= link_to 'editprofile', edit_profile_path %></li>
+                <li><%= link_to 'upgrade', edit_profile_path %></li>
+                <li><%= link_to 'logout', logout_path, method: :delete %></li>
+			   <% else %>
+               <li><%= link_to 'signin', login_path %></li> 
+                <li><%= link_to 'signup', new_user_path %></li>
+			<% end %>
+		</ul>
+	</nav>
+</header>
 	
 	<%= flash[:notice] if flash[:notice] %>
     <%= flash[:alert] if flash[:alert] %>

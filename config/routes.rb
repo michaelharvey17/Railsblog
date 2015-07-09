@@ -2,6 +2,7 @@ Rails.application.routes.draw do
    resources :users
    resources :posts 
    get '/sign_up', to: "users#sign_up"
+   get '/login', to: "users#login"
   
 
 

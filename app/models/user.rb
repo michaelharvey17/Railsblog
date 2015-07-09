@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
-  has_many :posts
+  has_many :blops, dependent: :destroy
   validates :password, confirmation: true
   validates_uniqueness_of :email, :username
-  validates_presence_of :username, :email, :password, :lname, :fname, :password_confirmation
-
+  validates_presence_of :username, :email, :lname, :fname
+  validates :password, presence: true, on: :create
+  validates :password_confirmation, presence: true, on: :create
 end
