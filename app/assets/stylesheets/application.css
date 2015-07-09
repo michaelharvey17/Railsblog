@@ -13,4 +13,85 @@
  *= require_tree .
  *= require_self
  */
+body {
+	font-family: Arial, sans-serif;
+	font-size: 16px;
+	background-color: #FF69B4;
+}
+
+header {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	padding: .15em 1em;
+	background-color: white;
+	border-bottom: 1px solid #FF69B4;
+}
+
+header h3 {
+	font-weight: normal;
+	display: inline-block;
+}
+
+header nav {
+	float: right;
+	margin-right: 2.5em;
+}
+header nav li {
+	display: inline-block;
+	font-size: .9em;
+}
+
+header nav li a {
+	padding: .25em .5em;
+	display: block;
+	color: white;
+	text-decoration: none;
+	background-color: #FF69B4;
+	border-radius: 6px 6px;
+	margin-left: .5em;
+}
+
+main {
+	width: 600px;
+	border: 1px solid #FF69B4;
+	margin: 100px auto;
+	padding: 2em;
+	background-color: white;
+	border-radius: 12px 12px;
+}
+
+input {
+	padding: .5em;
+}
+
+form div {
+	margin-top: .5em;
+}
+
+.post {
+	padding: .25em 0;
+	border-bottom: 1px solid #FF69B4;
+}
+
+
+.post h3 {
+	font-weight: normal;
+}
+.post p {
+	font-size: .85em;
+	color: #999;
+}
+
+.post p a {
+	text-decoration: none;
+	color: #999;
+}
+
+textarea {
+	padding: 1em;
+	font-size: 1em;
+	width: 400px;
+}
 *= require_directory posts
