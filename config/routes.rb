@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+  resources :users
+  resources :posts
+
+  root 'home#index'
+  get '/posts/:id', to: "posts#show"
+  put 'posts/:id/edit', to: "posts#edit"
+  post '/posts/:id/comment', to: "posts#comment"
+  post 'posts/:id/delete', to: "posts#delete"
+
+
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
