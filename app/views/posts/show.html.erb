@@ -7,9 +7,9 @@
 		<title><%=@post.id%></title>
 	</head>
 	<body>
-		<header>
+		<div id="poster">
 			<div><a href="/users/<%=@post.user.username%>"><span>• </span><%=@post.user.username%><span> •</span></a></div>
-		</header>
+		</div>
 		<% if session[:id]==@post[:user_id] %>
 			<div class="mainpost">
 				<%=form_for Post.new, url: "/posts/#{@post.id}/edit", html: {method: :put} do |f|%>
@@ -26,7 +26,7 @@
 				<span id="content"><%=@post.content%></span>
 			</div>
 		<% end %>
-		<% unless session[:id]==@post[:user_id] && @post.content==nil%>
+		<% unless session[:id]==@post[:user_id] && @post.content==nil || session[:id]==nil%>
 			<div id="commentbox">
 				<span>Comment:</span>
 				<%=form_for Post.new, url: "/posts/#{@post.id}/comment" do |f|%>

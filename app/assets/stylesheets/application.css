@@ -88,10 +88,41 @@ form div {
 	text-decoration: none;
 	color: #999;
 }
-
-textarea {
-	padding: 1em;
-	font-size: 1em;
-	width: 400px;
+#signup{
+	width: 20em;
+	margin: 0 auto;
+	text-align: right;
 }
+#allposts{
+	width: 90%;
+	margin: 12em auto 0 auto;
+	text-align: center;
+
+}
+.posttime{
+	font-size: 1em;
+}
+.postcontent{
+	font-size: 1.5em;
+}
+#allposts div{
+	/*float: left;*/
+	display: inline-block;
+	width: 45%;
+	/*max-width: 40%;*/
+	background-color: white;
+	margin: .25em;
+	text-align: left;
+	padding: .5em;
+	vertical-align: top;
+}
+#allposts a{
+	text-decoration: none;
+	color: black;
+}
+#allposts a p{
+	border-left: solid;
+	padding-left: .5em;
+}
+
 *= require_directory posts

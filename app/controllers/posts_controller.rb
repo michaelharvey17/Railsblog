@@ -1,17 +1,18 @@
 class PostsController < ApplicationController
   def new
-    @post=Post.new
-
+    @newpost=Post.new(user_id: session[:id])
+    @newpost.save
+    redirect_to "/posts/#{@newpost.id}"
   end
 
   def create
-    @post=Post.new(params[:post])
+    @post=Post.new(post_params)
     @post[:user_id]=session[:id]
     @post.save
   end
 
   def comment
-    @comment=Post.new(params[:post])
+    @comment=Post.new(post_params)
     @comment[:user_id]=session[:id]
     @comment[:post_id]=params[:id]
     @comment.save
@@ -19,7 +20,7 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @update=Post.update(params[:id], content: params[:post][:content])
+    @update=Post.update(params[:id], content: post_params[:content])
     redirect_to "/posts/#{params[:id]}"
   end
 
@@ -36,7 +37,12 @@ class PostsController < ApplicationController
   def show
     @post=Post.find(params[:id])
     @comments=Post.where(post_id: @post.id).reverse
-    session[:id]=1
+  end
+
+  private
+
+  def post_params
+    params.require(:post).permit(:content)
   end
 
 end 

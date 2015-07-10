@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   post 'posts/:id/delete', to: "posts#delete"
    get '/sign_up', to: "users#sign_up"
    get '/login', to: "users#login"
+   get '/logout', to: "home#logout"
+   get '/users/:id', to: "users#show"
   
 
 

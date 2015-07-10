@@ -3,12 +3,11 @@ class HomeController < ApplicationController
 
   end
 
-  def index
+  def logout
+    session.clear
+    redirect_to '/'
   end
   
-  def 
-    
-  end
 
  
 end 

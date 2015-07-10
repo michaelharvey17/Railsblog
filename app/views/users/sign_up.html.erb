@@ -1,7 +1,8 @@
 <h1> Sign Up </h1>
 <%= form_for User.new do |f| %>
 
-  
+  <div id="signup">
+  	<h1>Sign up!</h1>
 	<div>
 	  <%= f.label :username %>
 	  <%= f.text_field :username %>
@@ -35,5 +36,5 @@
     <div>
 	  <%= f.submit "Sign Up" %>
     </div>
-
+</div>
 <% end %>

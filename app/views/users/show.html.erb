@@ -1,7 +1,22 @@
-<h1><%= @user.username %></h1>
-<section>
-	<h3><%= @user.username %>'s Details</h3>
-	<ul>
-		<li><%= @user.fname %> <%= @user.lname %></li>
-	</ul>
-</section>
+<!Doctype html>
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script src=''></script>
+		<meta charset="UTF-8">
+		<title><%=@user.username%></title>
+	</head>
+	<body>
+		<div id="poster">
+			<div><a href="/users/<%=@user.username%>"><span>• </span><%=@user.username%><span> •</span></a></div>
+		</div>
+		<div id="allposts">
+			<% @posts.each do |f|%>
+				<div>
+					<p class="posttime"><%= f.created_at.strftime("%c")%></p>
+					<a href="/posts/<%="#{f.id}"%>"><p class="postcontent"><%=f.content%></p></a>
+				</div>
+			<% end %>
+		</div>
+	</body>
+</html>
