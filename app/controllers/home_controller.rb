@@ -3,7 +3,8 @@ class HomeController < ApplicationController
 
   end
 
-  def index
+  def logout
+    session[:id].clear
   end
   
   def 

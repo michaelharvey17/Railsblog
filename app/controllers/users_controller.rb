@@ -2,7 +2,8 @@ class UsersController < ApplicationController
    before_action :authenticate_user!, only: [:edit, :update, :destroy]
 
   def new
-    @user = User.new 
+    @user = User.new
+    redirect_to '/sign_up'
   end
 
   def sign_up
@@ -21,7 +22,6 @@ params[:user][:password])
       end
     end 
   end 
-  
 
 
   def edit
@@ -29,7 +29,9 @@ params[:user][:password])
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.find_by(username: params[:id])
+    @posts = Post.where(user_id: @user.id).reverse
+    session[:id]=1
   end
 
   def create 
