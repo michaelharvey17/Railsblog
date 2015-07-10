@@ -13,7 +13,7 @@
 		<div id="allposts">
 			<% @posts.each do |f|%>
 				<div>
-					<p class="posttime"><%= f.created_at%></p>
+					<p class="posttime"><%= f.created_at.strftime("%c")%></p>
 					<a href="/posts/<%="#{f.id}"%>"><p class="postcontent"><%=f.content%></p></a>
 				</div>
 			<% end %>

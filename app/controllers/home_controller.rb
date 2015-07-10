@@ -4,12 +4,10 @@ class HomeController < ApplicationController
   end
 
   def logout
-    session[:id].clear
+    session.clear
+    redirect_to '/'
   end
   
-  def 
-    
-  end
 
  
 end 
