@@ -31,15 +31,16 @@ params[:user][:password])
   def show
     @user = User.find_by(username: params[:id])
     @posts = Post.where(user_id: @user.id).reverse
-    session[:id]=1
   end
 
   def create 
-    @user = User.new(params.require(:user).permit(:username, :email, :lname, :fname, :password, :password_confirmation))
-    if @user.save 
-       redirect_to @user, notice: "New Account has been created!"
+    @user = User.new(params[:user])
+    @user.save
+    if @user.save
+      session[:id]=@user.id
+       redirect_to "/users/#{@user.username}", notice: "New Account has been created!"
     else
-      render :new 
+      redirect_to '/sign_up'
     end 
   end 
 end 
