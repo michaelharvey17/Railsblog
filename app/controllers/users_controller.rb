@@ -12,8 +12,7 @@ class UsersController < ApplicationController
   def login
       user = User.new
     if request.post?
-      if session[:user] = User.authenticate(params[:user][:login], 
-params[:user][:password])
+      if session[:user] = User.authenticate(params[:user][:login],params[:user][:password])
         flash[:message]  = "Login successful"
         redirect_to :root
       else
@@ -37,7 +36,7 @@ params[:user][:password])
     if @user.save 
        redirect_to @user, notice: "New Account has been created!"
     else
-      render :new 
+      redirect_to '/'
     end 
   end 
 end 

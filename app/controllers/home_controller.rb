@@ -1,14 +1,16 @@
 class HomeController < ApplicationController
-  def index
+  def login
+    @user = User.where(username: params[:username]).first
+    if @user && @user.password==params[:password]
+      session[:id]=@user.id
+      redirect_to "/users/#{@user.username}"
+    else 
+      redirect_to '/'
+    end 
+  end 
 
-  end
-
-  def index
-  end
-  
-  def 
-    
-  end
-
- 
+def logout
+  session.clear
+  redirect_to '/'
+end
 end 
