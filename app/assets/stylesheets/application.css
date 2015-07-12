@@ -124,5 +124,26 @@ form div {
 	border-left: solid;
 	padding-left: .5em;
 }
+#allusers {
+	width: 40%;
+	text-align: center;
+	margin: 5em auto;
+}
+#allusers ul{
+	padding: 0;
+}
+#allusers li {
+	list-style: none;
+}
+#allusers a{
+	text-decoration: none;
+	color: black;
+	font-size: 1.5em;
+}
+#login {
+	width: 40%;
+	margin: 4em auto 0 auto;
+	text-align: center;
+}
 
 *= require_directory posts
