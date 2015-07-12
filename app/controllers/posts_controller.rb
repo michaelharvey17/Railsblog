@@ -26,12 +26,13 @@ class PostsController < ApplicationController
 
   def delete
     @post=Post.find(params[:id])
+    Post.find(params[:id]).destroy
     if @post.post_id==nil
-      redirect_to '/users/#{User.find(session[:id]).username}'
+      redirect_to "/users/#{User.find(session[:id]).username}"
     else
       redirect_to "/posts/#{@post.post_id}"
     end
-    @post.destroy
+    
   end
 
   def show

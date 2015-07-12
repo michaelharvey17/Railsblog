@@ -16,7 +16,7 @@
 					<%=f.text_area :content, class: "maincontent", value: @post.content%>
 					<%=f.submit :post%>
 				<% end %>
-				<%=form_tag("/posts/#{@post.id}/delete", method: "post") do%>
+				<%=form_tag("/posts/#{@post.id}/delete", method: "delete") do%>
 					<%=submit_tag("Delete Post")%>
 				<% end %>
 			</div>

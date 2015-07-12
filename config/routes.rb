@@ -9,11 +9,14 @@ Rails.application.routes.draw do
   post '/posts/:id/comment', to: "posts#comment"
   post 'posts/:id/delete', to: "posts#delete"
    get '/sign_up', to: "users#sign_up"
-   get '/login', to: "users#login"
    get '/logout', to: "home#logout"
    get '/users/:id', to: "users#show"
-  
+   post '/login', to: "home#login"
+   get '/sign_in', to: "home#sign_in"
 
+   
+  
+#get '/' => "home#index" #
 
 
 

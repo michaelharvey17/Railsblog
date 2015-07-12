@@ -1,0 +1,21 @@
+
+<% if !session[:id] %>
+	<div id="login">
+		<h1>Login </h1>
+		<%= form_tag("/login", method: "post") do %>
+		<%= label_tag(:username, "Username") %>
+		<%= text_field_tag(:username) %>
+		<%= label_tag(:password, "password") %>
+		<%= text_field_tag(:password) %>
+		<%= submit_tag("Login") %>
+	</div>
+<% end %>
+<div id="allusers">
+	<h2>Users</h2>
+	<ul>
+	<% User.all.each do |f| %>
+		<li><a href="/users/<%="#{f.username}"%>"><%=f.username%></a></li>
+	<% end %>
+	</ul>
+</div>
+<% end %>
